@@ -1,0 +1,4 @@
+*.odp
+
+/.gitignore~
+*.svg

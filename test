@@ -1,0 +1,1 @@
+date | sed 's/Nov/Nov\n/;s/CET/CET\n/' | figlet -c

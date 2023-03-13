@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<title>Beispielanwendung</title>
+<meta name="author" content="Sebastian Meisel"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/league.css" id="theme"/>
+
+<link rel="stylesheet" href="./mystyle.css"/>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Beispielanwendung</h1><p class="subtitle">Continual-Improvement (CI) Modell</p>
+<h2 class="author">Sebastian Meisel</h2>
+</section>
+
+<section>
+<section id="slide-orgc6a74d7">
+<h2 id="orgc6a74d7">Szenario</h2>
+<p>
+Eine SWOT-Analyse hat Ransomware-Angriffe als akutes Risiko identifiziert und Schwächen in der Abwehr solcher Angriffe erkannt. Nun sollen Maßnahmen ergriffen werde, um die Bedrohung zu minimieren.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orga73d948">
+<h3 id="orga73d948">Was ist unsere Vision?</h3>
+<p>
+Unsere Unternehmen soll innerhalb des nächsten Jahres ein umfassendes Konzept zur Disaster-Recovery<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> bei einem erfolgreichen Ransomware-Angriff, sowie ein geeignetes Konzept zur Prävention eines solchen Angriffes erarbeiten.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org31636d6">
+<h3 id="org31636d6">Wo stehen wir?</h3>
+<p>
+Zunächst muss die Ist-Situation ermittelt werden. Dies beinhaltet die Identifizierung der <b>Assets</b><sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>, die am anfälligsten für Angriffe sind. Dazu muss ein umfassender <b>Vulnerabilty-Scan</b> erfolgen sowie die <b>Überprüfung der Sicherheitsprotokolle</b> und z.B. der <b>Firewall</b>-Implementierung. Schließlich muss die aktuelle <b>Backupstrategie</b> dokumentiert werden. Auch die Kompetenz der IT-Abteilung in Bezug auf auf Strategien zur Abwehr von Ransomware-Angriffen muss überprüft werden.
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org27772d9">
+<h3 id="org27772d9">Wo wollen wir hin?</h3>
+<p>
+In diesem Schritt sollen konkrete Ziele (S.M.A.R.T.) formuliert, Metriken (KPIs) zur Messung der Zielerreichung und Maßnahmen zum erreichen dieser Ziele erarbeitet werden.
+Dabei kann eine Gap-Analyse helfen.
+</p>
+
+</section>
+<section id="slide-org8384714">
+<h4 id="org8384714">Key Performance Indikators (KPIs)</h4>
+<p>
+KPIs sind Metriken (Messwerte), die in Bezug auf eine konkrete Fragestellung besonders aussagekräftig sind. Ziel ist es wenige KPIs zu wählen anhand derer weitere Entscheidungen getroffen werden und die gleichzeitig bei der Bewertung des Erfolgs von Verbesserungsmaßnahmen helfen.
+</p>
+
+</section>
+<section id="slide-org8384714-split">
+
+<p>
+Es gibt eine Vielzahl von KPIs, die bei der Bewertung der IT-Sicherheit in Bezug auf die Sicherheit einer Backupstrategie verwendet werden können. Die Auswahl der KPIs hängt von den Anforderungen des Unternehmens ab und sollte in Zusammenarbeit mit den relevanten Stakeholdern identifiziert und priorisiert werden.
+</p>
+
+
+</section>
+<section id="slide-orga49b3cb">
+<h5 id="orga49b3cb">Backup-Zeitfenster:</h5>
+<p>
+Die Zeit, die benötigt wird, um eine vollständige Sicherung aller relevanten Daten abzuschließen. Ein kürzeres Backup-Zeitfenster kann darauf hindeuten, dass die Backupstrategie optimiert und die Backup-Infrastruktur gut konfiguriert ist.
+</p>
+
+</section>
+<section id="slide-org314dc0d">
+<h5 id="org314dc0d">Recovery Point Objective (RPO):</h5>
+<p>
+Die maximale Datenmenge, die im Falle eines Ausfalls oder einer Störung verloren gehen kann. Ein niedriger RPO zeigt an, dass die Backupstrategie effektiv ist und es wenig Datenverlust im Falle eines Ausfalls geben wird.
+</p>
+
+</section>
+<section id="slide-org7638261">
+<h5 id="org7638261">Recovery Time Objective (RTO):</h5>
+<p>
+Die maximale Zeit, die benötigt wird, um die Geschäftsprozesse nach einem Ausfall wiederherzustellen. Ein niedriger RTO zeigt an, dass die Backup- und Wiederherstellungsfunktionen effektiv sind.
+</p>
+
+</section>
+<section id="slide-org6b2dae9">
+<h5 id="org6b2dae9">Anzahl der erfolgreichen Wiederherstellungen:</h5>
+<p>
+Die Anzahl der Wiederherstellungen, die erfolgreich durchgeführt wurden. Eine hohe Anzahl erfolgreicher Wiederherstellungen zeigt an, dass die Backupstrategie effektiv ist.
+</p>
+
+</section>
+<section id="slide-orgafaf6dd">
+<h5 id="orgafaf6dd">Anzahl der Backup-Fehler:</h5>
+<p>
+Die Anzahl der Fehler, die bei der Durchführung von Backups aufgetreten sind. Ein niedriger Wert zeigt an, dass die Backupstrategie stabil ist und dass das Backup-System gut funktioniert.
+</p>
+
+</section>
+<section id="slide-org40fa11e">
+<h5 id="org40fa11e">Daten-Integrität:</h5>
+<p>
+Ein Indikator dafür, ob die Sicherungskopien der Daten tatsächlich wiederhergestellt werden können und die Integrität der Daten gewährleistet ist. Ein geringer Wert deutet darauf hin, dass die Backupstrategie überarbeitet werden muss.
+</p>
+
+</section>
+<section id="slide-org373f0a2">
+<h5 id="org373f0a2">Kosten für Backup und Wiederherstellung:</h5>
+<p>
+Die Kosten für die Implementierung und Wartung von Backup- und Wiederherstellungslösungen. Eine Senkung der Kosten könnte darauf hindeuten, dass die Backupstrategie effektiv ist und optimiert wurde.
+</p>
+
+
+</section>
+<section id="slide-orga948035">
+<h4 id="orga948035">Gap Analysis</h4>
+<p>
+Eine Gap-Analyse in Bezug auf eine Backupstrategie kann dazu beitragen, potenzielle Lücken oder Schwachstellen in der aktuellen Backupstrategie zu identifizieren. Eine solche Analyse könnte wie folgt aussehen:
+</p>
+
+</section>
+<section id="slide-orgb6ef07f">
+<h5 id="orgb6ef07f">Anforderungsanalyse:</h5>
+<p>
+Zunächst sollten die Anforderungen an die Backupstrategie festgelegt werden. Dazu gehören RPO, RTO, Datenintegrität und Backupzeitfenster.
+</p>
+
+</section>
+<section id="slide-org8e58cae">
+<h5 id="org8e58cae">Ist-Analyse:</h5>
+<p>
+In diesem Schritt wird die aktuelle Backupstrategie bewertet. Hier werden die vorhandenen Backup-Lösungen, -Prozesse und -Technologien untersucht. Es sollten Fragen gestellt werden, wie zum Beispiel:
+</p>
+
+</section>
+<section id="slide-org8e58cae-split">
+
+<ul>
+<li>Welche Backup-Methoden und Technologien werden derzeit eingesetzt?</li>
+<li>Welche Daten werden gesichert und wie häufig?</li>
+<li>Wie oft werden die Backup-Systeme getestet?</li>
+<li>Wie lange dauert es, um die Daten wiederherzustellen?</li>
+<li>Wie wird die Sicherheit der Backup-Daten gewährleistet?</li>
+<li>Wie gut sind die Backup- und Wiederherstellungsprozesse dokumentiert?</li>
+
+</ul>
+
+</section>
+<section id="slide-orgddb1a29">
+<h5 id="orgddb1a29">Soll-Analyse:</h5>
+<p>
+In diesem Schritt wird der gewünschte Zustand der Backupstrategie definiert, basierend auf den Anforderungen und der Ist-Analyse. Die Soll-Analyse sollte klare Ziele und Maßnahmen zur Verbesserung der Backupstrategie enthalten.
+</p>
+
+</section>
+<section id="slide-org76fbb8d">
+<h5 id="org76fbb8d">Identifikation von Lücken:</h5>
+<p>
+In diesem Schritt wird der Unterschied zwischen dem aktuellen Zustand (Ist-Analyse) und dem gewünschten Zustand (Soll-Analyse) analysiert, um Lücken und Schwachstellen zu identifizieren.
+</p>
+
+</section>
+<section id="slide-org78b3f0a">
+<h5 id="org78b3f0a">Priorisierung von Maßnahmen:</h5>
+<p>
+Basierend auf den identifizierten Lücken und Schwachstellen sollten Prioritäten für die Umsetzung von Maßnahmen festgelegt werden. Die Maßnahmen können beispielsweise die Einführung neuer Backup-Methoden, die Verbesserung der Backup-Technologien oder die Schulung von Mitarbeitern umfassen.
+</p>
+
+</section>
+<section id="slide-org904c06a">
+<h5 id="org904c06a">Umsetzung und Überwachung:</h5>
+<p>
+Nach der Festlegung von Maßnahmen sollte ein Plan für deren Umsetzung erstellt werden. Die Umsetzung sollte sorgfältig überwacht und die KPIs regelmäßig bewertet werden, um sicherzustellen, dass die Ziele erreicht werden.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org85e9c2e">
+<h3 id="org85e9c2e">Es angehen!</h3>
+<p>
+Das IT-Team setzt den Plan um, um die Sicherheitsmaßnahmen zu stärken. Dies kann die Aktualisierung von Software-Patches, die Überprüfung der Sicherheitsprotokolle und die Stärkung der Firewall umfassen.
+</p>
+
+<p>
+Das IT-Team überwacht und misst regelmäßig die Effektivität der neuen Sicherheitsmaßnahmen. Dazu werden die zuvor festgelegten KPIs gemessen, um den Fortschritt der Verbesserungen zu verfolgen.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org97ccd1e">
+<h3 id="org97ccd1e">Sind wir dahin gekommen?</h3>
+<p>
+Das IT-Team bewertet regelmäßig die KPIs und identifiziert Verbesserungsmöglichkeiten, um die Effektivität der Sicherheitsmaßnahmen weiter zu steigern. Zum Beispiel könnten Schulungen für Mitarbeiter durchgeführt werden, um sie für die Risiken von Ransomware-Angriffen zu sensibilisieren oder die Implementierung neuer Technologien zur Verbesserung der Cyber-Sicherheit in Betracht gezogen werden.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org7b84a2f">
+<h3 id="org7b84a2f">Wir bleiben wir dran?</h3>
+<p>
+Erfolge in der Abwehr von pontentiellen Angriffen, sollten kommuniziert werden. Zugleich gilt es neue Angriffswege im Blick zu behalten und die Abwehrstrategien stätig anzupassen. 
+</p>
+
+</section>
+<section id="slide-orgefc1f86">
+<h4 id="orgefc1f86">Mitarbeiter begleiten</h4>
+<p>
+Die Stärkung von IT-Sicherheitskonzepten kann für Mitarbeitende auch mit einigen Belastungen verbunden sein. Es ist wichtig zu betonen, dass die Stärkung von IT-Sicherheitskonzepten auch Vorteile für die Mitarbeitenden haben kann, z.B. durch eine erhöhte Sicherheit ihrer Daten und eine verbesserte Compliance mit relevanten Vorschriften.
+</p>
+
+</section>
+<section id="slide-orgefc1f86-split">
+
+<p>
+Es ist daher ratsam, die Belastungen und Vorteile sorgfältig abzuwägen und sicherzustellen, dass die Mitarbeitenden angemessen geschult und informiert werden, um mögliche negative Auswirkungen auf ein Minimum zu reduzieren, um die Bereitschaft solche Verbesserungen anzugehen zu erhalten.
+</p>
+
+<p>
+Hier sind einige der Möglichen Belastungen zusammengestellt:
+</p>
+
+</section>
+<section id="slide-org5d56467">
+<h5 id="org5d56467">Einschränkungen bei der Nutzung von IT-Ressourcen:</h5>
+<p>
+Die Stärkung von IT-Sicherheitskonzepten kann bedeuten, dass Mitarbeitende in ihrer Nutzung von IT-Ressourcen eingeschränkt werden, z.B. durch den Einsatz von Zugangskontrollen, Firewall-Regeln oder Passwortrichtlinien. Dies kann als störend empfunden werden und den Workflow beeinträchtigen.
+</p>
+
+</section>
+<section id="slide-org889982c">
+<h5 id="org889982c">Zusätzliche Schulungen und Trainings:</h5>
+<p>
+Um sicherzustellen, dass Mitarbeitende die neuen IT-Sicherheitskonzepte verstehen und anwenden können, müssen sie möglicherweise zusätzliche Schulungen und Trainings absolvieren. Dies kann zusätzlichen Zeitaufwand bedeuten und unter Umständen als Belastung empfunden werden.
+</p>
+
+</section>
+<section id="slide-org8667d76">
+<h5 id="org8667d76">Höherer Zeitdruck:</h5>
+<p>
+Die Stärkung von IT-Sicherheitskonzepten kann zu einem höheren Zeitdruck führen, insbesondere wenn Mitarbeitende zusätzliche Überprüfungen oder Maßnahmen durchführen müssen, um sicherzustellen, dass die Sicherheitsstandards eingehalten werden. Dies kann zu einem erhöhten Stressniveau und einer Belastung der Arbeit führen.
+</p>
+
+</section>
+<section id="slide-org5389383">
+<h5 id="org5389383">Veränderungen im Arbeitsumfeld:</h5>
+<p>
+Wenn sich IT-Sicherheitskonzepte ändern, kann dies Veränderungen im Arbeitsumfeld mit sich bringen, z.B. durch die Einführung neuer Technologien oder die Umstellung auf neue Prozesse. Dies kann eine Einarbeitungsphase erfordern und zu Unsicherheiten und Unwohlsein bei den Mitarbeitenden führen.
+</p>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom/zoom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
+
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+plugins: [RevealMarkdown, RevealZoom, RevealNotes]
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+:LaTeX_PROPERTIES:
+#+LANGUAGE:              de
+#+OPTIONS:		 d:nil todo:nil pri:nil tags:nil
+#+OPTIONS:		 H:4
+#+LaTeX_CLASS:		 orgstandard
+#+LaTeX_CMD:             xelatex
+:END:
+#+TITLE: ~LEK\_Themen~
+* =00_ITILv3.pdf=
+- S.3: Was ist ITIL
+
+* =ITIL_11_Practices=
+
+- Folie 3: Unterschied Prozess / Praxis
+- Folie 6: Gruppen des Praktiken
+- Folie 10: Information Security (Kasten)
+

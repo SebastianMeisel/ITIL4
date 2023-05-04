@@ -5,13 +5,21 @@
 #+LaTeX_CLASS:		 orgstandard
 #+LaTeX_CMD:             xelatex
 :END:
-#+TITLE: ~LEK\_Themen~
+#+TITLE: =LEK-Themen=
 * =00_ITILv3.pdf=
 - S.3: Was ist ITIL
-
 * =ITIL_11_Practices=
-
 - Folie 3: Unterschied Prozess / Praxis
 - Folie 6: Gruppen des Praktiken
 - Folie 10: Information Security (Kasten)
-
+- Folie 16: Organisational Change Management (OCM): menschliche Aspekte
+- Folie 32: Change Enablement: organisatorische Aspekte (Change Authority)
+- Folie 20: Risk management:
+- identifizieren / analysieren / begegnen
+- "Risiken sind Teil des Geschäfts."
+- Folie 33: Incident management
+- Incident = Ein Ereignis, dass die Ausführung eines Dienstes stört oder unmögllich macht.
+- Folie 38: Problem management
+  - Problem = Ursache eines Incidents
+- Folie 45: Disaster management
+  - Disaster = Incident der die Existent der Organisation oder ihren Wert gefährdet.

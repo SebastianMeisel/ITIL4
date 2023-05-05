@@ -30,3 +30,5 @@
 - Folie 3:
 - 4 Dimension: Interne Faktoren, die einander beeinflussen
 - Externe Faktoren beeinflussen von außen.
+* =ITIL_04_Leit-Prinzipien.pdf=
+- Folie 3: 7 Leit-Prinzipien

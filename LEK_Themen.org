@@ -11,11 +11,12 @@
 * =ITIL_11_Practices.pdf=
 + Folie 3: Unterschied Prozess / Praxis
 + Folie 6: Gruppen des Praktiken
-+ Folie 10: Information Security (Kasten)
++ Folie 10: Info
+rmation Security (Kasten)
 + Folie 16: Organisational Change Management (OCM): menschliche Aspekte
 + Folie 32: Change Enablement: organisatorische Aspekte (Change Authority)
 + Folie 33: Incident management
-+ Incident = Ereignis, dass die Ausführung eines Services stört oder unmöglich macht.
++ Incident = Ereignis, dass die Ausführung eines Services stört oder unterbricht.
 + Folie 20: Risk management
 - Risiken sind Teil des Geschäfts.
 - identifizieren / analysieren / begegnen
@@ -26,6 +27,11 @@
 - Folie 26: Workforce & Talent management
 - Folie 47: Service design
 * =ITIL_Überblick_simple.pdf=
+- Consumers: (Kunden) Customers - (Nutzer) Users
+- Vier Dimensionen
+- Service Value System (SVS): Philosophischer Rahmen (z.B. 7 Leitprinzipien)
+- Service Value Chain: Einzelne Schritte von der Nachfrage zum gelieferten Wert (früher Prozesseskette)
+- gemeinsam geschaffener Wert: Subjektiv empfundener Nutzen oder Mehrwert -> entsteht erst durch Nutzung
 * =ITIL_03_Vier_Dimensionen.pdf=
 - Folie 3:
 - 4 Dimension: Interne Faktoren, die einander beeinflussen

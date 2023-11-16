@@ -1,0 +1,96 @@
+:LaTeX_PROPERTIES:
+#+LANGUAGE: de
+#+OPTIONS: d:nil todo:nil pri:nil tags:nil
+#+OPTIONS: H:4
+#+LaTeX_CLASS: orgstandard
+#+LaTeX_CMD: xelatex
+:END:
+
+:REVEAL_PROPERTIES:
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_REVEAL_JS_VERSION: 4
+#+REVEAL_THEME: league
+#+REVEAL_EXTRA_CSS: ./mystyle.css
+#+REVEAL_HLEVEL: 1
+#+OPTIONS: timestamp:nil toc:nil num:nil
+:END:
+
+
+#+TITLE: Zusammenfassung zum Thema DORA-Metriken
+#+SUBTITLE: ITIL
+#+AUTHOR: Sebastian Meisel
+
+
+* DORA-Metriken in DevOps
+  :PROPERTIES:
+  :END:
+  
+  - DORA steht für "DevOps Research and Assessment".
+  - Ursprünglich entwickelt, um die Leistung von Softwareteams zu messen und zu verbessern.
+  - Sie sind das Ergebnis umfangreicher Forschung und Analyse.
+
+** Deployment-Frequenz
+   - Wie oft wird Software in die Produktion oder in einen produktionsähnlichen Zustand freigegeben?
+   - Einfach ausgedrückt: Wie oft schickt das Team neue Software an die Kunden?
+#+CAPTION: Deployment-Frequenz
+#+NAME: fig:DF
+#+ATTR_HTML: :width 50%
+#+ATTR_LATEX: :width .65\linewidth
+#+ATTR_ORG: :width 700
+[[file:img/DeploymentFrequency.png]]
+
+** Lead-Time für Änderungen
+   - Wie lange dauert es, eine Codeänderung von der Commit-Phase bis zur Produktion zu bringen?
+   - Wie lange dauert es, bis eine neue Idee oder Fehlerbehebung beim Kunden ankommt?
+#+CAPTION: Lead Time for Changes
+#+NAME: fig:LTC
+#+ATTR_HTML: :width 50%
+#+ATTR_LATEX: :width .65\linewidth
+#+ATTR_ORG: :width 700
+[[file:img/LeadTimeForChanges.png]]
+
+** Mean Time to Restore (MTTR)
+   - Wie schnell können Sie von einem Ausfall oder einem anderen unerwünschten Ereignis erholen?
+   - Wie schnell ist das Team, wenn etwas schiefgeht, um es wieder in Ordnung zu bringen?
+#+CAPTION: Mean Time to Restore
+#+NAME: fig:MTTR
+#+ATTR_HTML: :width 50%
+#+ATTR_LATEX: :width .65\linewidth
+#+ATTR_ORG: :width 700
+[[file:img/MTTR.png]]
+
+** Change Failure Rate
+   - Wie oft führen Änderungen zu einem Ausfall oder einer Beeinträchtigung des Dienstes?
+   - Wie oft geht etwas schief, wenn neue Software veröffentlicht wird?
+#+CAPTION: Change Failure Rate
+#+NAME: fig:CFR
+#+ATTR_HTML: :width 50%
+#+ATTR_LATEX: :width .65\linewidth
+#+ATTR_ORG: :width 700
+[[file:img/ChangeFailureRate.png]]
+
+* Bedeutung der DORA-Metriken
+  :PROPERTIES:
+  :END:
+
+ * Diese Metriken bieten einen objektiven Überblick über die Leistungsfähigkeit des Entwicklungsprozesses.
+ * Sie helfen, Engpässe zu identifizieren und Verbesserungsmöglichkeiten zu erkennen.
+
+* Vergleich zu anderen Ansätzen
+  :PROPERTIES:
+  :END:
+  * *Velocity in Agile*
+     - Misst, wie viel Arbeit ein Team in einem bestimmten Zeitraum erledigen kann.
+  * *Bug Rate*
+     - Die Anzahl der Fehler, die in einem bestimmten Zeitraum gemeldet werden.
+  * *Code Churn*
+     - Wie oft der Code geändert wird, kann auf instabile Bereiche hinweisen.
+  * *Customer Satisfaction*
+     - Direktes Feedback von den Endbenutzern über die Qualität der Software.
+
+* Unterschiede und Gemeinsamkeiten
+  :PROPERTIES:
+  :END:
+  * *DORA* fokussiert auf den gesamten Entwicklungszyklus, während andere Metriken oft nur Teilaspekte abdecken.
+  * *DORA*-Metriken sind oft einfacher zu messen und zu interpretieren.
+  * Andere Metriken können subjektiver sein oder mehr Interpretation erfordern.

@@ -1,0 +1,188 @@
+ITIL 4
+®
+
+Information Technologie Infrastructure Library
+
+Grundbegriffe
+
+Organisationen können sich in Größe, Komplexität und Rechtsstatus
+unterscheiden.
+Es kann sich um eine einzelne Person, ein Team oder eine komplexes
+Netzwerk, das durch gemeinsame Ziele verbunden ist.
+Sie kann eine oder mehrer der folgenden Rollen einnehmen:
+Als Service Provider bietet eine Organisation einen Service an.
+Dieser Rolle gegenüber steht die des Konsumenten (Service Consumers).
+Dabei kann es sich um zwei verschiedene Organisationen handeln oder
+verschiedene Funktionseinheiten innerhalb einer Organisation.
+IT
+IL
+3/ ® 4
+9
+
+Organisation & Service-Provider
+
+ITIL®4 versteht unter einer Organisation eine Person oder Gruppe von
+Personen, die ihre eigenen Funktionen mit Verantwortlichkeiten, Befugnisse
+(authorities) und Beziehungen hat, um seine Ziele (objectives) zu erreichen.
+
+Konsumenten (Services Consumers) sind diejenigen, die einen Service
+vom Service-Provider buchen, diesen nutzen oder finanzieren.
+
+Indem sie den Service buchen, finanzieren oder nutzen wirken unmittelbar
+sie an der Wertschöpfung mit (co-creation of value).
+Dabei gibt es 3 Rollen:
+Kunden (customers):
+
+Definiert die Anforderungen und ist für den
+Outcome eines Service verantwortlich.
+
+Geldgeber (sponsor):
+
+Autorisiert das Budget für den Service.
+
+Anwender (user):
+
+Nutzt den Service.
+
+IT
+IL
+4/ ® 4
+9
+
+Konsumenten
+
+Sie sind also diejenigen für die der Service erstellt oder zusammengestellt
+(obtain or build) wird.
+
+Stakeholder sind alle anderen, die an der Wertschöpfung mittelbar
+beteiligt oder am Ergebnis (outcome) eines Services interessiert sind.
+Für sie entsteht durch den Service ebenfalls auf vielfältige Weise direkt
+oder indirekt ein Wert.
+
+●
+
+Angestellte des Service Providers
+
+●
+
+Partner-Organisationen
+
+●
+
+Zulieferer
+
+●
+
+Anteilseigner
+
+●
+
+Regierungs-Organisationen (z. B. Aufsichtsbehörden)
+
+●
+
+Nicht-Regierungs-Organisationen
+
+●
+
+die Gesellschaft als ganzes oder bestimmte soziale Gruppen
+
+●
+
+…
+
+IT
+IL
+5/ ® 4
+9
+
+Stakeholder
+
+Stakeholdergruppen können unter anderem folgende sein:
+
+Wert (value) definiert ITIL®4 als (subjektiv) „empfundenen Gewinn
+(benefit), Nutzen (usefullness) oder Bedeutung (importance) von etwas.“
+Der Wert kann finanzieller, materieller oder immaterieller Art sein.
+
+Die Frage nach dem Mehrwert, der durch einen Service für die
+Konsumenten und die übrigen Stakeholder ermöglicht wird, ist das LeitKriterium für alle Entscheidungen im Service-Management nach ITIL®4.
+Das Hauptziel ist wiederum das Wertangebot zu den Konsumenten zu
+bringen und diese dazu einzuladen, es anzunehmen.
+
+IT
+IL
+6/ ® 4
+9
+
+(Mehr)wert
+
+Dabei betont ITIL®4, dass Wert nur gemeinsam mit anderen –
+insbesondere den Konsumenten – geschaffen werden kann.
+
+Als Output wird jedes materielle oder immaterielle Ergebnis einer
+Aktivität bezeichnet.
+Der Output ist objektiv und lässt sich quantitativ messen (z. B. Anzahl
+der Codezeilen, die in einer Stunde geschrieben wurden).
+Was kommt dabei
+für mich heraus?
+
+Als Outcome wird demgegenüber das Ergebnis der Nutzung von einem
+oder mehreren Outputs für einen Stakeholder oder Kosumenten.
+Das Outcome ist subjektiv und in der Regel nicht quantitativ messbar.
+IT
+IL
+7/ ® 4
+9
+
+Output vs. Outcome
+
+Das können Produkte, Zwischenprodukte, Ideen, Entwürfe, etc. sein.
+
+Produkte und Service
+
+Ein Produkt stellt eine Zusammenstellung der Ressourcen einer Organisation
+dar, das erstellt oder zusammengestellt wird und potenziell nützlich für die
+Kunden dieser Organisation sein wird:
+
+IT
+IL
+8/ ® 4
+9
+
+Ein Service ist ein Mittel, um die aktive gemeinsame Wertschöpfung zu
+ermöglichen, indem er die Ergebnisse fördert bzw. unterstützt, die Kunden
+erreichen wollen, ohne dass der Kunde spezifische Kosten und Risiken trägt.
+
+Kosten sind die Summe an Geld, die für eine spezifische Aktivität oder Ressource
+aufwendet.
+In einer Service-Beziehung gibt es aus Sicht des Konsumenten zwei Arten von
+Kosten:
+●
+
+!
+
+Kosten, die durch die Nutzung des Service direkt (Forderungen des ServiceProviders) oder indirekt (z. B. Schulungskosten, Datennutzung, etc.) entstehen.
+
+Risiken sind einerseits Ereignisse, die Schaden oder Verlust verursachen oder es
+erschweren, ein Ziel zu erreichen; anderseits können sie auch eine Unsicherheit in
+Bezug auf den Outcome bezeichnen. Im zweiten Fall kann der Begriff verwendet
+werden, um die Wahrscheinlichkeit eines negativen wie positiven Outcomes zu
+beschreiben.
+Bei den Risiken kann die selbe Unterscheidung getroffen werden, wie bei den
+Kosten: Manche Risiken ‚spart‘ man sich durch die Nutzung eines Services, andere
+entstehen gerade durch die Nutzung.
+Dabei ist es die Pflicht des Providers die Risiken des Konsumenten zu managen.
+
+IT
+IL
+9/ ® 4
+9
+
+Kosten & Risiken
+
+●
+
+Kosten, die sie oder er durch den Service spart (z. B. Personalkosten,
+Materialkosten, etc.).
+
+

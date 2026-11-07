@@ -1,30 +1,15 @@
-# Urheberrecht, Marken und Lizenz-Risiken
+# Hinweise zur Rechteklärung (Stand: November 2026)
 
-**Vorläufige Risikoeinschätzung, keine Rechtsberatung (Stand: November 2026).**
+Das Repository enthält eigene Unterrichtsmaterialien sowie möglicherweise externe Dokumente. Nach Auskunft des Repository-Inhabers sind **alle Grafiken im Repository von ihm selbst von Hand erstellt**. Diese Herkunftsangabe wird bei der Bewertung berücksichtigt; allein eine selbst gezeichnete Form bedeutet allerdings nicht zwingend, dass eine sehr werknahe Reproduktion fremder geschützter Darstellungen frei von Rechten Dritter ist. Die bisherige pauschale Einstufung aller Diagramme als fremd war nicht angemessen.
 
-## Ausgangslage
+Die vorhandenen Grafiken dürfen im Rahmen der Rechte des Urhebers für die Lernwerkstatt wiederverwendet werden. Bei Diagrammen, die offizielle ITIL-Grafiken sehr eng nachbilden, muss gesondert auf geschützte Gestaltung, Textübernahmen und Marken geachtet werden. Das neue interaktive Value-Chain-Bild ist deshalb eigenständig in HTML/CSS umgesetzt; die bisherigen Originalgrafiken werden nicht stillschweigend als offiziell lizenziert bezeichnet.
 
-Das öffentlich zugängliche Repository `SebastianMeisel/ITIL4` ist auf GitHub als CC0-1.0 ausgewiesen. Es enthält u. a. eine Reihe ITIL-Präsentationen als PDF, ein ITIL-v3-PDF, ein Glossar, Grafiken und offenbar fremde PDFs zu UX und Barrierefreiheit. **CC0 kann Rechte von AXELOS/PeopleCert oder anderen Urhebern nicht beseitigen.** Gerade öffentliche Verteilung und Einbettung in eine neue App sollten daher separat geprüft werden.
+**ITIL® ist eine Marke der PeopleCert-Gruppe**. Die neue App ist ein eigenständiges, nicht akkreditiertes Lernangebot ohne Beziehung zu PeopleCert/AXELOS. Fachbegriffe und abstrakte Modelle können erklärt werden. Eine Übernahme geschützter Originaltexte, offizieller Prüfungsfragen, Logos oder Lizenzmaterialien sollte ohne entsprechende Erlaubnis unterbleiben. Die CC0-Kennzeichnung des Repositories betrifft nur Rechte, die der jeweilige Rechteinhaber wirksam freigeben kann.
 
-## Risikoübersicht
+Für öffentliche und insbesondere kommerzielle Verwertung: Text- und Bildquellen konkret dokumentieren, markenrechtliche Hinweise und PeopleCert-Lizenzbedingungen prüfen.
 
-- **Geringer:** Fachbegriffe, Grundlagenkonzepte und eigenständige Erläuterungen mit selbst entwickelten Übungen, sofern keine markenmäßige Herkunftstäuschung entsteht.
-- **Mittel:** Sehr enge Paraphrasen originaler Definitionen, charakteristische Darstellungen/Strukturen, vollständige Nachbildung von Schaubildern. Vor Publikation Ähnlichkeits- und Quellenkontrolle durchführen.
-- **Hoch:** Kopierte AXELOS-/PeopleCert-Texte, offizielle Abbildungen, Original-Schulungsunterlagen, echte Prüfungsfragen, Swirl-Logo, unberechtigte Zertifizierungs- und Akkreditierungsaussagen; ebenfalls fremde PDF/Images ohne dokumentierte Nutzungserlaubnis.
-- **Besonderes Risiko des bestehenden Repositories:** Hier ist noch keine Einzelfallprüfung sämtlicher PDF-Abbildungen und fremder Quellen durchgeführt worden. Die vorhandene CC0-Deklaration allein genügt nicht als Rechtekette.
+Quellen:
+- https://www.peoplecert.org/acknowledgements
+- https://www.peoplecert.org/Organizations/Services/third-party-product-licensing-service
 
-## Umsetzung in dieser App
-
-1. Alle Erklärtexte und Aufgaben neu formulieren; keine PDF- oder Bilddateien des Repositories einbetten.
-2. Eigene visuelle Gestaltung, keine AXELOS-/PeopleCert-Logos oder offiziellen Trainingsfragen.
-3. ITIL® nur beschreibend, kein Anschein einer Anerkennung oder Verbindung zum Markeninhaber.
-4. Hinweis im Footer: „ITIL® ist eine eingetragene Marke der PeopleCert-Gruppe. Unabhängiges, nicht akkreditiertes Lernangebot. Keine Verbindung zu oder Unterstützung durch PeopleCert.“
-5. Vor öffentlicher bzw. kommerzieller Verbreitung Markenverwendung und mögliche Produktlizenz mit PeopleCert klären. Lizenzdienst: https://www.peoplecert.org/Organizations/Services/third-party-product-licensing-service
-
-## Quellen und Orientierung
-
-- PeopleCert Markenanerkennungen: https://www.peoplecert.org/acknowledgements
-- PeopleCert Marks Usage Policy: https://www.peoplecert.org/-/media/folders-reorganized/legal-documents/qmepo13-marks-usage-policy.pdf
-- PeopleCert Third Party Product Licensing Service: https://www.peoplecert.org/Organizations/Services/third-party-product-licensing-service
-
-Diese Datei beansprucht keine Zustimmung oder Lizenz durch PeopleCert. Für konkrete Veröffentlichung, Vertrieb oder Prüfung der vorhandenen Materialien ist eine fachjuristische Beurteilung sinnvoll.
+Dies ist eine orientierende Einschätzung, keine Rechtsberatung.

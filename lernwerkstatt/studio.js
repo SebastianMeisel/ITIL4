@@ -1,6 +1,6 @@
 "use strict";
 /* Eigenständig verfasste Übungsfälle: keine offiziellen Prüfungsfragen. */
-const KEY="it-service-studio-v2";
+/* V3: non-linear, cross-functional service value streams */
 const chain=[
  {id:"plan",title:"Plan",short:"Richtung klären",ex:"Gemeinsame Ziele, Rahmenbedingungen, Prioritäten und Ressourcen sichtbar machen.",practices:["Strategy Management","Portfolio Management","Information Security Management"]},
  {id:"engage",title:"Engage",short:"Bedarf verstehen",ex:"Stakeholder, Erwartungen, Kommunikationswege und notwendige Vereinbarungen klären.",practices:["Relationship Management","Business Analysis","Service Level Management","Service Desk"]},
@@ -75,50 +75,92 @@ kdm:{title:"Digitalisierungsmanagement",profession:"Kaufmann/-frau für Digitali
 const $=id=>document.getElementById(id);
 const html=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e};
 const add=(parent,tag,cls,txt)=>{const e=html(tag,cls,txt);parent.append(e);return e};
+
+// Scenario-specific responsibilities; units may collaborate across activities.
+// This is a teaching example, not a fixed ITIL organisational structure.
+const units={
+ sisi:{plan:["Schulleitung","IT-Service-Management"],engage:["Service Desk","Lehrkräfte"],design:["Netzwerkteam","Change-Verantwortliche"],build:["Netzwerkteam","Einkauf"],deliver:["Service Desk","Netzwerkbetrieb"],improve:["Service-Owner","Problem-Management"]},
+ ae:{plan:["Produktverantwortliche","Fachbereich"],engage:["Business Analysis","Bürgerbüro"],design:["Entwicklung","QA/Testing"],build:["Entwicklung","CI-Team"],deliver:["Release-Team","IT-Betrieb"],improve:["Service-Owner","Entwicklung"]},
+ dpa:{plan:["Prozessmanagement","Datenverantwortliche"],engage:["Fachbereich","Data Analysts"],design:["Datenarchitektur","Prozessanalyse"],build:["Data Engineering","Data Quality"],deliver:["Data Operations","Kundenservice"],improve:["Prozessmanagement","Data Quality"]},
+ kdm:{plan:["Geschäftsführung","Controlling"],engage:["Fachabteilungen","Business Analysis"],design:["Prozessmanagement","Datenschutz"],build:["Einkauf","SaaS-Anbieter"],deliver:["Service Desk","Fachabteilungen"],improve:["Prozess-Owner","Controlling"]}
+};
+const routes={
+ sisi:{start:"deliver",suggest:{deliver:"engage",engage:"design",design:"build",build:"deliver",plan:"engage",improve:"deliver"},reason:"Akute Ausfälle: zuerst den Service stabilisieren, dann mit Betroffenen Ursachen und Lösungen bearbeiten."},
+ ae:{start:"engage",suggest:{engage:"design",design:"build",build:"deliver",deliver:"improve",improve:"design",plan:"engage"},reason:"Unklare Buchungsfälle: zuerst Anforderungen und Fehlerbilder klären, anschließend iterativ entwickeln."},
+ dpa:{start:"engage",suggest:{engage:"design",design:"build",build:"deliver",deliver:"improve",improve:"engage",plan:"engage"},reason:"Widersprüchliche Daten: erst die fachlichen Bedeutungen verstehen, dann Qualitätsschleifen aufbauen."},
+ kdm:{start:"plan",suggest:{plan:"engage",engage:"design",design:"build",build:"deliver",deliver:"improve",improve:"engage"},reason:"Wirtschaftliche Entscheidung: mit Ziel und Budget beginnen, Fachbereiche beteiligen und den Prozess iterativ verbessern."}
+};
+const STORE="it-service-studio-v3";
 let data;
-try{data=JSON.parse(localStorage.getItem(KEY))||{scenario:"sisi",stage:0,decisions:{},notes:{},checked:{}}}catch{data={scenario:"sisi",stage:0,decisions:{},notes:{},checked:{}}}
+try{data=JSON.parse(localStorage.getItem(STORE))}catch{}
+if(!data||typeof data!=="object")data={scenario:"sisi",stage:4,visits:{},notes:{},checked:{},journal:{}};
 if(!scenarios[data.scenario])data.scenario="sisi";
-data.stage=Math.min(5,Math.max(0,Number(data.stage)||0));data.decisions||={};data.notes||={};data.checked||={};
-const persist=()=>{try{localStorage.setItem(KEY,JSON.stringify(data))}catch{}};
-function btn(label,click,cls=""){const b=html("button",cls,label);b.type="button";b.addEventListener("click",click);return b}
-function focusMain(){const m=$("main");m.focus({preventScroll:true});m.scrollIntoView({block:"start",behavior:"instant"})}
-function switchScenario(id){data.scenario=id;data.stage=0;persist();render();focusMain()}
-function switchStage(index){data.stage=index;persist();render();focusMain()}
-function key(){return data.scenario+"-"+data.stage}
-function score(){let sum=0;for(let i=0;i<6;i++){const d=data.decisions[data.scenario+"-"+i];if(Number.isInteger(d))sum+=scenarios[data.scenario].steps[i].options[d][1]}return sum}
-function render(){const sc=scenarios[data.scenario],step=sc.steps[data.stage],act=chain.find(x=>x.id===step.focus);
- const chooser=$("profession");chooser.replaceChildren();Object.entries(scenarios).forEach(([id,s])=>{const o=html("option","",s.profession);o.value=id;chooser.append(o)});chooser.value=data.scenario;
- $("scenario-title").textContent=sc.subtitle;$("scenario-context").textContent=sc.context;$("consumer").textContent=sc.consumer;
- $("step-count").textContent="Station "+(data.stage+1)+" / 6";
- $("metric").textContent=sc.baseline+" → "+sc.target+" "+sc.unit;$("budget").textContent=sc.budget;
- const nav=$("stage-nav");nav.replaceChildren();chain.forEach((c,i)=>{const b=btn((i+1)+". "+c.title,()=>switchStage(i),"chain-step");if(data.stage===i)b.setAttribute("aria-current","step");if(Number.isInteger(data.decisions[data.scenario+"-"+i]))b.classList.add("answered");nav.append(b)});
- renderVisual(step.focus);
- $("stage-heading").textContent=act.title+": "+act.short;$("explanation").textContent=act.ex;$("situation").textContent=step.situation;$("question").textContent=step.question;
- const pc=$("practices");pc.replaceChildren();act.practices.forEach(p=>{const b=btn(p,()=>showPractice(p),"practice");if(p===step.practice)b.classList.add("focus-practice");pc.append(b)});
- $("featured-practice").textContent="Im Fall besonders wichtig: "+step.practice;
- const choices=$("choices");choices.replaceChildren();step.options.forEach(([text],i)=>{let b=btn(text,()=>{data.decisions[key()]=i;persist();render()},"answer");b.setAttribute("aria-pressed",String(data.decisions[key()]===i));choices.append(b)});
- const result=$("feedback");result.replaceChildren();const chosen=data.decisions[key()];if(Number.isInteger(chosen)){const o=step.options[chosen];result.hidden=false;add(result,"strong","",o[1]>0?"Gut begründeter Weg":"Prüfe die Folgen dieser Entscheidung");add(result,"p","",o[3]);add(result,"p","", "Simulation: Nutzen "+(o[1]>0?"+":"")+o[1]+", Risikokontrolle "+(o[2]>0?"+":"")+o[2]+". Diese Werte dienen nur der Reflexion, nicht der Zertifizierungsbewertung.")}else result.hidden=true;
- $("assignment").textContent=step.prompt;$("notes").value=data.notes[key()]||"";$("complete").checked=!!data.checked[key()];
- const completed=Array.from({length:6},(_,i)=>data.checked[data.scenario+"-"+i]).filter(Boolean).length;
- $("progress-text").textContent=completed+" von 6 Arbeitsaufträgen selbstständig bearbeitet";$("progress").value=completed;$("total").textContent="Entscheidungswert im Szenario: "+score()+" (didaktische Simulation)";
- $("previous").disabled=data.stage===0;$("next").textContent=data.stage===5?"Auswertung ansehen":"Nächste Aktivität →";$("next").onclick=()=>{if(data.stage===5)showSummary();else switchStage(data.stage+1)};
- $("intro-note").textContent="Die sechs Aktivitäten sind kein verpflichtender Ablauf. Diese Lernroute nutzt sie als Orientierung; in echten Wertströmen können Aktivitäten mehrfach vorkommen, übersprungen oder anders kombiniert werden.";
- $("scenario-description").textContent="Ausgangslage: "+sc.context;
+data.visits||={};data.notes||={};data.checked||={};data.journal||={};
+data.stage=Number.isInteger(data.stage)&&data.stage>=0&&data.stage<6?data.stage:chain.findIndex(c=>c.id===routes[data.scenario].start);
+const btn=(label,click,cls="")=>{const b=html("button",cls,label);b.type="button";b.addEventListener("click",click);return b};
+const persist=()=>{try{localStorage.setItem(STORE,JSON.stringify(data))}catch{}};
+const scenarioKey=()=>data.scenario;
+const activityKey=i=>data.scenario+"-"+i;
+const visitsFor=i=>data.visits[activityKey(i)]||[];
+const log=()=>data.journal[scenarioKey()]||[];
+const unitsFor=i=>units[data.scenario][chain[i].id]||[];
+function focusMain(){const m=$("main");m.focus({preventScroll:true});m.scrollIntoView({block:"start"})}
+function switchScenario(id){data.scenario=id;data.stage=chain.findIndex(c=>c.id===routes[id].start);persist();$("summary").hidden=true;render();focusMain()}
+function switchStage(i){data.stage=i;persist();render();focusMain()}
+function total(){return log().reduce((n,item)=>n+item.impact,0)}
+function recordChoice(i){const sc=scenarios[data.scenario],step=sc.steps[data.stage],option=step.options[i],previous=visitsFor(data.stage).length;
+ const item={activity:step.focus,idx:data.stage,choice:i,impact:previous?Math.round(option[1]/2):option[1],risk:previous?Math.round(option[2]/2):option[2],unit:unitsFor(data.stage).join(" / "),sequence:log().length+1};
+ data.visits[activityKey(data.stage)]=[...visitsFor(data.stage),item];
+ data.journal[scenarioKey()]=[...log(),item];
+ persist();render();
 }
-function renderVisual(active){const v=$("chain-map");v.replaceChildren();const intro=add(v,"div","edge","Nachfrage");intro.setAttribute("aria-hidden","true");const grid=add(v,"div","chain-grid");
- chain.forEach((c,i)=>{let b=btn(c.title,()=>switchStage(i),"chain-node");b.dataset.id=c.id;if(c.id===active)b.classList.add("active");b.setAttribute("aria-label",c.title+", "+c.short+", Station "+(i+1));add(b,"span","","↗ "+c.short);grid.append(b)});
- add(v,"div","edge","Wert / Outcome");const cap=add(v,"p","map-caption","Service Value Chain: sechs vernetzte Aktivitäten, keine feste Einbahnstraße.");cap.id="map-caption"}
-function showPractice(name){const dlg=$("practice-dialog");$("practice-name").textContent=name;$("practice-text").textContent=glossary[name]||"Diese Practice unterstützt eine oder mehrere Aktivitäten.";const related=chain.filter(x=>x.practices.includes(name)).map(x=>x.title).join(", ");$("practice-chain").textContent="In dieser Lernwerkstatt verknüpft mit: "+(related||"weiteren Aktivitäten")+". In der Praxis kann die Practice mehrere Aktivitäten unterstützen.";if(typeof dlg.showModal==="function")dlg.showModal();else dlg.hidden=false}
-function showSummary(){const sc=scenarios[data.scenario],container=$("summary-content");container.replaceChildren();add(container,"h3","",sc.profession+" — "+sc.subtitle);add(container,"p","",sc.consumer);add(container,"p","","Ausgangswert → Zielwert: "+sc.baseline+" → "+sc.target+" "+sc.unit);
- sc.steps.forEach((s,i)=>{const box=add(container,"section","summary-item");add(box,"h4","",chain[i].title+" · "+s.practice);let choice=data.decisions[data.scenario+"-"+i];add(box,"p","",Number.isInteger(choice)?s.options[choice][0]:"Noch keine Entscheidung getroffen.");add(box,"p","",data.notes[data.scenario+"-"+i]||"Noch keine eigene Begründung erfasst.")});
+function resetCurrentVisit(){/* Visits are append-only; simply navigate or record another decision. */}
+function render(){const sc=scenarios[data.scenario],step=sc.steps[data.stage],act=chain[data.stage],visited=visitsFor(data.stage),route=routes[data.scenario];
+ const chooser=$("profession");chooser.replaceChildren();Object.entries(scenarios).forEach(([id,s])=>{const o=html("option","",s.profession);o.value=id;chooser.append(o)});chooser.value=data.scenario;
+ $("scenario-title").textContent=sc.subtitle;$("scenario-context").textContent=sc.context;$("consumer").textContent=sc.consumer;$("metric").textContent=sc.baseline+" → "+sc.target+" "+sc.unit;$("budget").textContent=sc.budget;
+ $("step-count").textContent="Freie Station: "+act.title;
+ $("intro-note").textContent="Wie in einem Raum: Du entscheidest selbst, wo du arbeitest, welchen Bereich du auslässt und wohin du zurückkehrst. Mehrere Teams übernehmen Aufgaben oder übergeben sie einander. Die Aktivitäten sind miteinander verbunden, aber keine Pflicht-Reihenfolge.";
+ const nav=$("stage-nav");nav.replaceChildren();chain.forEach((c,i)=>{const amount=visitsFor(i).length;const b=btn(c.title+(amount?" · "+amount+"×":""),()=>switchStage(i),"chain-step");if(data.stage===i)b.setAttribute("aria-current","step");if(amount)b.classList.add("answered");nav.append(b)});
+ renderVisual(act.id);
+ $("stage-heading").textContent=act.title+" – "+act.short;$("explanation").textContent=act.ex;$("situation").textContent=step.situation;$("question").textContent=step.question;
+ $("featured-practice").textContent="Aktueller Fokus: "+step.practice+". Die Practice kann auch andere Aktivitäten unterstützen.";
+ const pc=$("practices");pc.replaceChildren();act.practices.forEach(p=>{const b=btn(p,()=>showPractice(p),"practice");if(p===step.practice)b.classList.add("focus-practice");pc.append(b)});
+ const team=$("unit-list");team.replaceChildren();unitsFor(data.stage).forEach((name,i)=>add(team,"li","",""+name+(i===0?" (federführend)":" (beteiligt)")));
+ $("handoff").textContent=log().length?"Vorherige Übergabe: "+log().at(-1).unit+" → "+unitsFor(data.stage)[0]+". Prüfe, welche Ergebnisse und Informationen dieses Team benötigt.":"Startpunkt: "+route.reason;
+ const choices=$("choices");choices.replaceChildren();step.options.forEach(([text],i)=>{const b=btn(text,()=>recordChoice(i),"answer");b.setAttribute("aria-label",text+". Entscheidung protokollieren");choices.append(b)});
+ const result=$("feedback");result.replaceChildren();const last=visited.at(-1);if(last){const o=step.options[last.choice];result.hidden=false;add(result,"strong","",o[1]>0?"Begründete Maßnahme dokumentiert":"Konsequenzen kritisch prüfen");add(result,"p","",o[3]);add(result,"p","","Hier bereits "+visited.length+" Entscheidung(en) dokumentiert. Ein erneuter Durchlauf ist möglich; wiederholte Wirkungswerte werden reduziert. Es handelt sich um didaktische Werte, keine echten Service-Messungen.")}else result.hidden=true;
+ $("assignment").textContent=step.prompt;$("notes").value=data.notes[activityKey(data.stage)]||"";$("complete").checked=!!data.checked[activityKey(data.stage)];
+ const count=chain.filter((_,i)=>data.checked[activityKey(i)]).length,distinct=chain.filter((_,i)=>visitsFor(i).length).length;
+ $("progress-text").textContent=distinct+" unterschiedliche Aktivitäten besucht, "+log().length+" Entscheidungen protokolliert; "+count+" Selbstreflexionen markiert.";
+ $("progress").value=distinct;$("total").textContent="Reflexionswert: "+total()+" (Simulation; keine Pflicht zur vollständigen Abdeckung).";
+ $("previous").textContent="Verlauf & Wirkung";$("previous").disabled=false;$("next").textContent="Möglicher nächster Raum: "+chain.find(c=>c.id===route.suggest[act.id]).title;
+ $("previous").onclick=showSummary;$("next").onclick=()=>switchStage(chain.findIndex(c=>c.id===route.suggest[act.id]));
+ $("visit-count").textContent="Besuche in dieser Aktivität: "+visited.length+". Wiederkehr kann wegen neuer Informationen sinnvoll sein.";
+ renderHistory();
+}
+function renderVisual(active){const v=$("chain-map");v.replaceChildren();add(v,"div","edge","Nachfrage");const grid=add(v,"div","chain-grid");
+ chain.forEach((c,i)=>{const count=visitsFor(i).length;const b=btn(c.title,()=>switchStage(i),"chain-node");b.dataset.id=c.id;if(c.id===active)b.classList.add("active");b.setAttribute("aria-label",c.title+", "+c.short+", frei wählbar, bisher "+count+" Entscheidungen");add(b,"span","",c.short);add(b,"span","visited-tag",count?count+" Entscheidung(en)":"Noch nicht besucht");grid.append(b)});
+ add(v,"div","edge","Wert / Outcome");add(v,"p","map-caption","Du kannst jedes Feld jederzeit auswählen und wiederholt bearbeiten. 'Improve' kann jederzeit eingreifen.") }
+function renderHistory(){const area=$("history");area.replaceChildren();const events=log();if(!events.length){add(area,"p","muted","Noch keine Entscheidungen getroffen. Wähle einen beliebigen Raum.");return}const list=add(area,"ol","history-list");events.forEach((e,i)=>{const li=add(list,"li","");const step=scenarios[data.scenario].steps[e.idx];add(li,"strong","",chain[e.idx].title+": ");add(li,"span","",step.options[e.choice][0]);add(li,"small","history-unit","Verantwortung: "+e.unit)})}
+function showPractice(name){const dlg=$("practice-dialog");$("practice-name").textContent=name;$("practice-text").textContent=glossary[name]||"Diese Practice unterstützt Aktivitäten.";const related=chain.filter(x=>x.practices.includes(name)).map(x=>x.title).join(", ");$("practice-chain").textContent="Beispielhafte Verbindung mit "+related+". Eine Practice ist keine identische organisatorische Abteilung und kann in mehreren Aktivitäten wirken.";if(typeof dlg.showModal==="function")dlg.showModal()}
+function showSummary(){const sc=scenarios[data.scenario],box=$("summary-content");box.replaceChildren();add(box,"h3","",sc.profession+" – "+sc.subtitle);
+ add(box,"p","","Dein tatsächlicher Weg: "+(log().map(e=>chain[e.idx].title).join(" → ")||"Noch keine Entscheidungen")+".");
+ add(box,"p","","Aktivitäten müssen nicht vollständig oder einmalig durchlaufen werden. Entscheidend sind Nutzen, Informationsübergaben und begründete Arbeit.");
+ const done=new Set(log().map(e=>e.idx));const skipped=chain.filter((_,i)=>!done.has(i)).map(c=>c.title);
+ add(box,"p","","Nicht besuchte Bereiche: "+(skipped.join(", ")||"keine")+". Das ist nicht automatisch ein Fehler.");
+ add(box,"h4","","Deine dokumentierten Entscheidungen");
+ log().forEach((e,i)=>{const s=sc.steps[e.idx],section=add(box,"section","summary-item");add(section,"h4","", (i+1)+". "+chain[e.idx].title+" · "+s.practice);add(section,"p","","Beteiligte: "+e.unit);add(section,"p","",s.options[e.choice][0]);add(section,"p","",data.notes[activityKey(e.idx)]||"Keine schriftliche Begründung hinterlegt.")});
+ add(box,"h4","","Reflexion");add(box,"p","","Welche Schritte waren tatsächlich notwendig? Wo bist du zurückgekehrt, weil neue Informationen aufgetaucht sind? An welche Einheit musstest du welche Ergebnisse übergeben?");
  $("summary").hidden=false;$("summary").scrollIntoView({block:"start"})}
-function download(){let text="IT-Service-Werkstatt – Reflexion (eigenständiges Lernangebot)\n";const sc=scenarios[data.scenario];text+="Beruf: "+sc.profession+"\nFall: "+sc.subtitle+"\n\n";sc.steps.forEach((s,i)=>{let key=data.scenario+"-"+i,d=data.decisions[key];text+=chain[i].title+" / "+s.practice+"\nFall: "+s.situation+"\nEntscheidung: "+(Number.isInteger(d)?s.options[d][0]:"offen")+"\nAuftrag: "+s.prompt+"\nAntwort:\n"+(data.notes[key]||"")+"\n\n"});const blob=new Blob([text],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="it-service-reflexion-"+data.scenario+".txt";a.click();setTimeout(()=>URL.revokeObjectURL(url),1500)}
+function download(){const sc=scenarios[data.scenario];let out="ITIL-4-Lernwerkstatt – individueller Wertstrom\n"+sc.profession+" – "+sc.subtitle+"\n\n";
+ out+="Gewählter Weg: "+(log().map(e=>chain[e.idx].title).join(" -> ")||"keine Entscheidungen")+"\n\n";
+ log().forEach((e,i)=>{const s=sc.steps[e.idx];out+=(i+1)+". "+chain[e.idx].title+" / "+s.practice+"\nEinheiten: "+e.unit+"\nEntscheidung: "+s.options[e.choice][0]+"\nBegründung: "+(data.notes[activityKey(e.idx)]||"")+"\n\n"});
+ const blob=new Blob([out],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="wertstrom-"+data.scenario+".txt";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 $("profession").addEventListener("change",e=>switchScenario(e.target.value));
-$("notes").addEventListener("input",e=>{data.notes[key()]=e.target.value;persist()});
-$("complete").addEventListener("change",e=>{data.checked[key()]=e.target.checked;persist();$("progress-text").textContent=Array.from({length:6},(_,i)=>data.checked[data.scenario+"-"+i]).filter(Boolean).length+" von 6 Arbeitsaufträgen selbstständig bearbeitet";$("progress").value=Array.from({length:6},(_,i)=>data.checked[data.scenario+"-"+i]).filter(Boolean).length});
-$("previous").addEventListener("click",()=>switchStage(data.stage-1));
+$("notes").addEventListener("input",e=>{data.notes[activityKey(data.stage)]=e.target.value;persist()});
+$("complete").addEventListener("change",e=>{data.checked[activityKey(data.stage)]=e.target.checked;persist();render()});
 $("export").addEventListener("click",download);
-$("reset").addEventListener("click",()=>{if(!confirm("Alle lokalen Antworten aller Berufsszenarien wirklich löschen?"))return;data={scenario:"sisi",stage:0,decisions:{},notes:{},checked:{}};persist();$("summary").hidden=true;render()});
+$("reset").addEventListener("click",()=>{if(!confirm("Alle lokalen Antworten aller Szenarien wirklich löschen?"))return;data={scenario:"sisi",stage:4,visits:{},notes:{},checked:{},journal:{}};persist();$("summary").hidden=true;render()});
 $("summary-close").addEventListener("click",()=>$("summary").hidden=true);
 $("practice-close").addEventListener("click",()=>$("practice-dialog").close());
 $("practice-dialog").addEventListener("click",e=>{if(e.target===$("practice-dialog"))e.target.close()});

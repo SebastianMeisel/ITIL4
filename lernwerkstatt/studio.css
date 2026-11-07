@@ -15,3 +15,10 @@
 .history-unit{display:block;font-size:.79rem;color:#4b6674}
 .chain-step.answered{font-weight:750}
 @media(prefers-color-scheme:dark){.unit-panel,.history-list li{border-color:#4a6c7b}.history-unit{color:#c2dce1}}
+
+/* Locally bundled illustrations, no dependency on the parent directory. */
+.image-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:18px 0}
+.image-gallery figure{margin:0;padding:12px;border:1px solid #b5cbd4;border-radius:9px;min-width:0}
+.image-gallery img{display:block;width:100%;height:auto;object-fit:contain;background:white}
+.image-gallery figcaption{font-weight:650;text-align:center;margin-top:8px}
+@media(prefers-color-scheme:dark){.image-gallery figure{border-color:#4a6c7b}}

@@ -50,3 +50,11 @@ Hinweise zu den Rechten siehe [RECHTE.md](RECHTE.md). Keine offizielle Zertifizi
 ## Didaktisches Leitbild: Ein Raum, kein Fließband
 
 Das Service Value System liefert einen Rahmen, keine starr nummerierten Zuständigkeiten. Die Service Value Chain ist ein flexibles, vernetztes Aktivitätsmodell. Manche Wertströme beginnen bei einem Incident direkt mit Deliver & Support, andere mit Engage oder Plan. Aktivitäten können ausgelassen, parallel bearbeitet, wiederholt oder von unterschiedlichen Organisationseinheiten gemeinsam gestaltet werden. Die exemplarischen Teams sind **keine von ITIL vorgeschriebene Organisationsstruktur**; Verantwortlichkeiten sind nach Projekt und Unternehmen unterschiedlich. Bei einer Übergabe müssen Beobachtungen, Anforderungen und Entscheidungen weitergegeben werden.
+
+## Einbindung der eigenen Originalgrafiken
+
+Alle in die Lernoberfläche eingebundenen Illustrationen liegen direkt unter `lernwerkstatt/assets/`. Die ursprünglich verwendete Einbindung `../ITIL_Überblick_simple.png` war beim Start von `python3 -m http.server 8000` **innerhalb** des Ordners `lernwerkstatt` nicht erreichbar, da der Webserver nicht auf Dateien außerhalb seines Stammverzeichnisses zugreifen kann.
+
+Jetzt werden die selbst erstellte ITIL-Übersicht und vier DORA-Kennzahlen-Abbildungen aus dem Originalrepository als identische Bilddateien in `assets/` vorgehalten. Die vorhandenen Originale bleiben unverändert. Unter der interaktiven Value-Chain-Karte können die beiden Bildbereiche aufgeklappt werden. Die Abbildungen sind bewusst optional und ergänzen die interaktive Lernumgebung.
+
+Weitere Originalbilder aus dem Repository (etwa `XaaS.png`) liegen für eine spätere Verwendung ebenfalls lokal vor, sind aber noch nicht in eine didaktisch passende Lerneinheit eingebunden.

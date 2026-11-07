@@ -4,3 +4,14 @@
 .source-figure img{display:block;max-width:100%;height:auto;margin:auto;border-radius:8px;background:white}
 .source-figure figcaption{margin-top:8px;font-size:.86rem;color:#526e80}
 .source-figure figure{margin:16px 0 0}
+
+/* A value stream can revisit activities and cross several teams. */
+.unit-panel{border-top:1px solid #b8cdd4;margin-top:20px;padding-top:8px}
+.unit-panel ul{padding-left:1.3rem}
+.unit-panel li{margin:5px 0}
+.visited-tag{font-size:.73rem!important;opacity:.85}
+.history-list{padding-left:1.3rem;max-height:420px;overflow-y:auto}
+.history-list li{margin:10px 0;border-bottom:1px solid #c0d4dc;padding-bottom:10px;overflow-wrap:anywhere}
+.history-unit{display:block;font-size:.79rem;color:#4b6674}
+.chain-step.answered{font-weight:750}
+@media(prefers-color-scheme:dark){.unit-panel,.history-list li{border-color:#4a6c7b}.history-unit{color:#c2dce1}}

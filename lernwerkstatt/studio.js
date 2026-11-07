@@ -97,9 +97,6 @@ if(!data||typeof data!=="object")data={scenario:"sisi",stage:4,visits:{},notes:{
 if(!scenarios[data.scenario])data.scenario="sisi";
 data.visits||={};data.notes||={};data.checked||={};data.journal||={};
 data.stage=Number.isInteger(data.stage)&&data.stage>=0&&data.stage<6?data.stage:chain.findIndex(c=>c.id===routes[data.scenario].start);
-const $=id=>document.getElementById(id);
-const html=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e};
-const add=(parent,tag,cls,txt)=>{const e=html(tag,cls,txt);parent.append(e);return e};
 const btn=(label,click,cls="")=>{const b=html("button",cls,label);b.type="button";b.addEventListener("click",click);return b};
 const persist=()=>{try{localStorage.setItem(STORE,JSON.stringify(data))}catch{}};
 const scenarioKey=()=>data.scenario;
